@@ -6,28 +6,39 @@ services:
             - POSTGRES_USER=airflow
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
-            - POSTGRES_PORT=5432
-    scheduler:
-        image: apache/airflow
-        command: scheduler
-        depends_on:
-            - postgres
         env_file:
             - .env
+    scheduler:
+        build: .
+        command: scheduler
+        env_file:
+            - .env
+        depends_on:
+            - postgres
         volumes:
-            - ./dags:/opt/airflow/dags
-            - ./logs:/opt/airflow/logs
+            - ./dags:/usr/local/airflow/dags
+            - ./logs:/usr/local/airflow/logs
+        healthcheck:
+          test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+          interval: 30s
+          timeout: 30s
+          retries: 3
     webserver:
-        image: apache/airflow
-        entrypoint: ./scripts/entrypoint.sh
+        build: .
+        entrypoint: /usr/local/airflow/scripts/entrypoint.sh
+        env_file:
+            - .env
         depends_on:
             - postgres
             - scheduler
-        env_file:
-            - .env
         volumes:
-            - ./dags:/opt/airflow/dags
-            - ./logs:/opt/airflow/logs
-            - ./scripts:/opt/airflow/scripts
+            - ./dags:/usr/local/airflow/dags
+            - ./logs:/usr/local/airflow/logs
+            - ./scripts:/usr/local/airflow/scripts
         ports:
             - "8080:8080"
+        healthcheck:
+          test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+          interval: 30s
+          timeout: 30s
+          retries: 3
