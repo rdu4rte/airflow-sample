@@ -1,0 +1,12 @@
+https://www.youtube.com/watch?v=aTaytcxy2Ck // running airflow 2.0 with docker
+https://gitlab.mercafacil.com/plataforma/docker-airflow // docker-airflow gitlab
+https://airflow2.mercafacil.com/api/v1/ui/ // airflow swagger docs
+https://medium.com/data-hackers/primeiros-passos-com-o-apache-airflow-etl-f%C3%A1cil-robusto-e-de-baixo-custo-f80db989edae // primeiros passos com airflow
+https://medium.com/@gilsondev/automatizando-seu-fluxo-de-trabalho-com-airflow-4dbc1c932dcb // airflow introdução
+https://gitlab.mercafacil.com/plataforma/account-microservice/blob/master/src/services/utils/airflowClient.js // airflowClient do accounts-microservice
+https://medium.com/analytics-vidhya/how-to-create-a-python-library-7d5aea80cc3f // criando uma lib em python
+https://tech.serhatteker.com/post/2018-12/virtualenv/ // virtualenv on ubuntu 20.04
+https://xnuinside.medium.com/quick-guide-how-to-run-apache-airflow-cluster-in-docker-compose-615eb8abd67a // quick guide: airflow, docker
+https://github.com/senzelden/twitter_data_pipeline // git project sample
+https://github.com/search?q=airflow+docker+mongodb // airflow, docker and mongodb git projects sample
+https://github.com/xnuinside/airflow_in_docker_compose // airflow with docker-compose sample
