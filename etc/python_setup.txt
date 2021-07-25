@@ -1,0 +1,48 @@
+@ python:
+------------------------------------------------------------
+# Virtual Env with Pipenv:
+	$ pipenv shell
+------------------------------------------------------------
+# Virtual Env with Venv:
+	$ python3 -m venv <venv-folder-name>
+	$ virtualenv .venv
+	$ source .venv/bin/activate
+------------------------------------------------------------
+# Dependencies:
+	$ <pipenv/pip> install psycopg2 psycopg-binary
+	
+	$ pip freeze > requirements.txt
+------------------------------------------------------------
+# Python Select Interpreter:
+	- Shift + Cmd + P;
+	- Select the folder;
+	- Select the Python version with the current env;
+------------------------------------------------------------
+# Set variable env:
+	$ export VARIABLE=value
+	
+# Inside the code:
+	os.getenv('VARIABLE') // value
+------------------------------------------------------------
+# Flask Nice Structure:
+
+root-folder: {
+	apps: {
+		module, 		// __init__.py, Model.py, View.py
+		config.py, 		// base config, etc
+		manager.py, 	// db migration commands
+		app.py, 		// app instance
+		run.py, 		// runner
+	},
+	venv, 				// virtualenv scripts and libs
+	.vscode,			// vscode config
+	.flaskenv 			// environment variables
+	.flaskenv-sample,	// environment sample
+	requirements.txt, 	// packages
+	.gitignore, 		// files to ignore	
+	}
+------------------------------------------------------------
+# DB Commands:
+	$ py manage.py db init
+	$ py manage.py db migrate
+	$ py manage.py db upgrade

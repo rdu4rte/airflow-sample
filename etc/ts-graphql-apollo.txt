@@ -1,0 +1,99 @@
+@ type-graphql/apollo-server template:
+#-------------------------------------------------------------#
+@ eslint: // lint files setup
+	eslint
+	eslint-plugin-import
+	eslint-plugin-json
+	eslint-plugin-node
+	eslint-plugin-promise
+	eslint-config-standard-with-typescript
+	@typescript-eslint/eslint-plugin
+	
+	yarn add --dev eslint eslint-plugin-import eslint-plugin-json eslint-plugin-node eslint-plugin-promise eslint-config-standard-with-typescript @typescript-eslint/eslint-plugin
+#-------------------------------------------------------------#
+@ lint-staged: // lint hook
+	yarn add --dev lint-staged
+#-------------------------------------------------------------#
+@ husky: // hooks creation
+	yarn add --dev husky
+	yarn husky install
+	"scripts": {
+    	"postinstall": "husky install"
+  	}
+	npx husky add .husky/pre-commit "npx lint-staged"
+#-------------------------------------------------------------#
+@ typescript: // just ts
+	typescript
+	ts-node-dev
+	
+	yarn add --dev typescript ts-node-dev
+#-------------------------------------------------------------#
+@ node: // server
+	nodemon
+	@types/node
+	
+	yarn add --dev nodemon @types/node
+#-------------------------------------------------------------#
+@ graphql:
+	graphql
+	type-graphql
+	graphql-tools
+	
+	yarn add graphql type-graphql graphql-tools
+#-------------------------------------------------------------#
+@ apollo:
+	yarn add apollo-server
+#-------------------------------------------------------------#
+@ git:
+	yarn add --dev git-commit-msg-linter
+#-------------------------------------------------------------#
+@ mongodb:
+	mongodb@3.6.3
+	@types/mongodb
+	
+	yarn add mongodb@3.6.3
+	yarn add --dev @types/mongodb
+#-------------------------------------------------------------#
+@ jest:
+
+$ npm i -D jest ts-jest @types/jest
+$ npx jest --init
+$ y, n, node, y, babel, n
+#-------------------------------------------------------------#
+@ utils:
+	cors
+	dotenv @types/dotenv // env files
+	helmet @types/helmet // security (helmet nao da pra usar sem express)
+	jsonwebtoken @types/jsonwebtoken // jwt tokens
+	typedi // dependency injection
+	winston // logger
+	reflect-metadata // decorators usage
+	
+	yarn add cors dotenv helmet jsonwebtoken typedi winston reflect-metadata
+	yarn add --dev @types/dotenv @types/helmet @types/jsonwebtoken
+#-------------------------------------------------------------#
+@ base package.json scripts:
+
+	"scripts": {
+		"prepare": "husky install",
+		"dev": "NODE_ENV=development nodemon ./src/server.ts",
+		"build": "rimraf ./dist && tsc",
+		"start": "NODE_ENV=production node ./dist/server.js"
+  	}
+#-------------------------------------------------------------#
+@ engine:
+	"engines": {
+    	"node": "^14.x"
+  	}
+#-------------------------------------------------------------#
+@ base setup:
+	.eslintrc.js
+	.eslintignore
+	.lintstagedrc.js
+	nodemon.json
+	tsconfig.json
+	Dockerfile
+	.dockerignore
+	docker-compose.yml
+	Makefile
+	.env
